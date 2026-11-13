@@ -100,5 +100,3 @@ To open the file ```LTspiceHelp.pdf``` just do:
 
 7. Book - **The LTSpice IV Simulator** - Manual, methods and applications <br>
    by Gilles Brocard <br>
-
-## Have fun!
