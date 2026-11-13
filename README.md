@@ -6,18 +6,22 @@ This are the steps to install and use LTspice 64 bits on Linux Ubuntu 20.04 . <b
 
 ## Installation
 
-```
-# Update your package manager.
-sudo apt-get update
+```bash
+# Update your package manager
+sudo apt update
 
 # Install Wine
-sudo apt-get install wine-stable
+# Note: Starting from Ubuntu 24.04 (Noble Numbat), the package 'wine-stable' was replaced by 'wine' in the official repositories.
+# For Ubuntu 24.04 and newer:
+sudo apt install wine
 
-# Download LTSpice 64 bits
+# (For older versions like Ubuntu 20.04 / 22.04, you can still use: sudo apt install wine-stable)
+
+# Download LTspice 64 bits
 cd /tmp/
-wget https://ltspice.analog.com/software/LTspice64.exe
+wget https://analog.com
 
-# Install LTSpice
+# Install LTspice
 wine LTspice64.exe
 rm LTspice64.exe
 ```
@@ -42,6 +46,18 @@ cp ~/.wine/drive_c/Program\ Files/LTC/LTspiceXVII/examples/Educational/Clapp.asc
 mkdir ~/.wine/drive_c/my_ltspice_files_2
 cp ~/my_files/test.asc ~/.wine/drive_c/my_ltspice_files_2/
 ```
+
+## Fix Small Fonts / High-DPI Scaling
+
+By default, Wine uses a 96 DPI screen resolution, which makes menus and text in LTspice look very small on modern Full HD or 4K monitors. To fix this:
+
+1. Open your terminal and run the Wine configuration tool:
+   ```bash
+   winecfg
+   ```
+2. Go to the **Graphics** tab at the top.
+3. Under **Screen resolution**, move the slider from `96 dpi` to **144 dpi** or **192 dpi** (depending on your screen size).
+4. Click **Apply**, then **OK**, and restart LTspice.
 
 ## LTspice Help Manual
 
@@ -85,30 +101,4 @@ To open the file ```LTspiceHelp.pdf``` just do:
 7. Book - **The LTSpice IV Simulator** - Manual, methods and applications <br>
    by Gilles Brocard <br>
 
-
-## References on installing LTspice
-
-* ```daniw/ltspice.sh``` - install ltspice on ubuntu (arch commented) <br>
-  Note: I use this info but updated it and modified it. <br>
-  [https://gist.github.com/daniw/7439488](https://gist.github.com/daniw/7439488)
-
-
-## My guides on electronics and common components
-
-* **How to learn modern Electronics** <br>
-  [https://github.com/joaocarvalhoopen/How_to_learn_modern_electronics](https://github.com/joaocarvalhoopen/How_to_learn_modern_electronics)
-
-* **Most common Components in electronics** <br>
-  [https://github.com/joaocarvalhoopen/Most_common_components_in_electronics](https://github.com/joaocarvalhoopen/Most_common_components_in_electronics)
-
-
-## All my other guides
-
-* The links to all my guides are in: <br>
-  **Guides on Linux - Programming - Embedded - Electronics - Aeronautics** <br>
-  [https://github.com/joaocarvalhoopen/Guides_Linux-Programming-Electronics-Aeronautics](https://github.com/joaocarvalhoopen/Guides_Linux-Programming-Electronics-Aeronautics)
-
-
 ## Have fun!
-Best regards, <br>
-João Nuno Carvalho <br>
