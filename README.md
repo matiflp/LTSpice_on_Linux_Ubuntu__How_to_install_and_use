@@ -47,6 +47,32 @@ mkdir ~/.wine/drive_c/my_ltspice_files_2
 cp ~/my_files/test.asc ~/.wine/drive_c/my_ltspice_files_2/
 ```
 
+## (Alternative) Create a Workspace for your Simulation Files
+
+Instead of burying your projects inside the hidden `~/.wine` directory, it is much cleaner to keep a dedicated workspace folder in your regular Ubuntu home directory and connect it to LTspice.
+
+### Option 1: Access your Ubuntu folder directly via the `Z:` drive (Recommended)
+Wine automatically maps your entire Linux file system to the **`Z:`** drive.
+
+1. Create a workspace folder in your Ubuntu home directory:
+   ```bash
+   mkdir -p ~/LTspice_Workspace
+   ```
+2. Open LTspice and go to **File > Open** (or **File > Save As**).
+3. In the file dialog, select drive **`Z:`** and navigate to `home/<your_user>/LTspice_Workspace`.
+
+### Option 2: Create a Symbolic Link inside Wine's `C:` drive
+If you prefer quick access directly from `C:\` without navigating through `Z:\home\...`, you can link your Ubuntu folder to Wine's virtual C drive:
+
+```bash
+# 1. Create your workspace folder in Ubuntu
+mkdir -p ~/LTspice_Workspace
+
+# 2. Link it to Wine's C: drive
+ln -s ~/LTspice_Workspace ~/.wine/drive_c/workspace
+```
+Now you can simply select **`C:\workspace`** inside LTspice, and all your `.asc` files will be stored directly in `~/LTspice_Workspace` on Ubuntu.
+
 ## Fix Small Fonts / High-DPI Scaling
 
 By default, Wine uses a 96 DPI screen resolution, which makes menus and text in LTspice look very small on modern Full HD or 4K monitors. To fix this:
